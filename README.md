@@ -118,3 +118,44 @@ Python, Pandas, NumPy, GSEApy, Matplotlib, STRING database.
 - Pathway enrichment depends on gene selection and database annotation coverage.
 - The STRING network contained only one unique interaction pair.
 - Further validation using independent datasets and experimental evidence is required.
+
+- ## Day 6: Drug-Gene Interaction Analysis Using DGIdb
+
+### Objective
+To investigate reported drug-gene interactions for the 15 prioritized candidate genes using the Drug-Gene Interaction Database (DGIdb).
+
+### Methodology
+- Queried 15 candidate genes using DGIdb.
+- Retrieved 47 drug-gene interaction records.
+- Examined associated drugs, regulatory approval status, indications, and interaction scores.
+- Summarized interaction counts for each candidate gene.
+- Generated a bar chart to visualize the interaction counts.
+
+### Key Findings
+
+Six genes had reported DGIdb interactions:
+
+| Gene | Interaction Count |
+|---|---:|
+| KCNQ4 | 21 |
+| FFAR4 | 11 |
+| GRIK3 | 9 |
+| IL5RA | 3 |
+| TNNI2 | 2 |
+| ELK1 | 1 |
+
+- Four matched genes had zero returned interactions: FZD9, DLX5, EMID1, and ORC1.
+- Five genes were listed as unmatched terms: SKA1, CCDC170, CCDC96, DEFB132, and TDRD10.
+- A total of 47 interaction records were retrieved.
+
+### Outputs
+- `dgidb_gene_interaction_summary.csv`
+- `dgidb_all_interactions.csv`
+- `dgidb_gene_interaction_counts.png`
+- `day6_dgidb_analysis.ipynb`
+
+### Limitations
+- DGIdb records do not establish that a drug is effective against TNBC.
+- Unmatched genes should not be interpreted as biologically inactive.
+- Regulatory approval status does not establish approval for TNBC treatment.
+- Further experimental and independent validation is required.
