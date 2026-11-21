@@ -47,3 +47,74 @@ L1 regularization compressed the 500 `SelectKBest` candidate genes down to a **6
 * `day3_ml_model.ipynb` — End-to-end Colab notebook implementing stratified splitting, leak-free `Pipeline` training, 5-fold CV, test set evaluation, and LASSO coefficient extraction.
 * `roc_curve.png` — Held-out test set ROC curve comparing classifier discrimination performance.
 * `top20_biomarkers.csv` — Ranked non-zero LASSO biomarker genes with signed coefficients and expression direction.
+
+* ## Day 4: Machine Learning-Based Biomarker Prioritization
+
+### Objective
+To identify and prioritize potential biomarker genes associated with Triple-Negative Breast Cancer (TNBC) using machine learning techniques.
+
+### Methods
+- Applied LASSO-based Logistic Regression for feature selection.
+- Used Random Forest to evaluate feature importance.
+- Identified and ranked candidate biomarker genes.
+- Generated expression boxplots for selected top candidate genes.
+- Evaluated model performance using a held-out test set.
+- Compared selected biomarker candidates with published research literature.
+
+### Tools and Libraries
+Python, Pandas, NumPy, Scikit-learn, Matplotlib.
+
+### Outputs
+- `top20_biomarkers.csv`
+- `rf_top20.csv`
+- `top5_boxplots.png`
+
+### Validation and Limitations
+Biomarker evaluation included held-out test-set assessment and literature-based evidence. Some candidate findings showed conflicting or insufficient published evidence. Independent-cohort validation remains future work.
+
+---
+
+## Day 5: Pathway Enrichment and Protein–Protein Interaction Analysis
+
+### Objective
+To explore the biological pathways associated with selected candidate genes and investigate their protein–protein interaction relationships.
+
+### Part 1: Pathway Enrichment Analysis
+- Selected the top 500 ranked genes from differential expression analysis.
+- Performed enrichment analysis using GSEApy.
+- Investigated GO Biological Process 2023 and KEGG 2021 Human gene sets.
+- Generated a pathway enrichment results table.
+- Created a bar plot to visualize the top enrichment results.
+
+**Observation:** The displayed top pathway results did not show statistically significant enrichment at an adjusted p-value threshold of 0.05.
+
+### Part 2: Protein–Protein Interaction Analysis
+- Selected 15 candidate proteins for network analysis.
+- Used the STRING database with Homo sapiens as the organism.
+- Generated a protein interaction network.
+- Exported interaction details and node-degree information.
+
+**Key Findings:**
+- Proteins analysed: 15
+- Unique interaction pairs: 1
+- Identified interaction: CCDC170–CCDC96
+- Combined interaction score: 0.403
+- Proteins with zero connections: 13
+
+The network was sparse, indicating limited database-supported interactions among the selected proteins at the chosen settings. STRING associations do not necessarily represent experimentally confirmed physical interactions.
+
+### Tools and Libraries
+Python, Pandas, NumPy, GSEApy, Matplotlib, STRING database.
+
+### Outputs
+- `pathways.csv`
+- `pathways.png`
+- `ppi_summary.csv`
+- `string_interactions_15_nodes (1).tsv`
+- `string_node_degrees_15_nodes (1).tsv`
+- `string_evidence_network_hires_15_nodes (1).png`
+
+### Limitations
+- Pathway enrichment depends on gene selection and database annotation coverage.
+- The STRING network contained only one unique interaction pair.
+- Further validation using independent datasets and experimental evidence is required.
