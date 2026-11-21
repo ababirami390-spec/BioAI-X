@@ -1,0 +1,8 @@
+Metric,Result
+Organism,Homo sapiens
+Proteins analysed,15
+Unique interaction pairs,1
+Interacting proteins,CCDC170 - CCDC96
+Combined interaction score,0.403
+STRING confidence threshold,0.4
+Proteins with zero connections,13
