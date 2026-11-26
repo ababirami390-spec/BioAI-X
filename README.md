@@ -159,3 +159,86 @@ Six genes had reported DGIdb interactions:
 - Unmatched genes should not be interpreted as biologically inactive.
 - Regulatory approval status does not establish approval for TNBC treatment.
 - Further experimental and independent validation is required.
+
+
+---
+
+## Day 7: Integrated Candidate-Gene Evidence and Final Prioritization
+
+### Objective
+To consolidate the results from differential expression, LASSO, Random Forest, DGIdb, and STRING analysis into a single evidence table for exploratory TNBC candidate-gene prioritization.
+
+### Methodology
+- Combined the top 500 differentially expressed genes with LASSO-selected and Random Forest-ranked genes.
+- Integrated DGIdb drug-gene interaction counts.
+- Added STRING protein interaction network degree information.
+- Merged the results using gene symbols as identifiers.
+- Preserved missing values where evidence was unavailable rather than treating missing information as zero.
+
+### Key Findings
+- 27 unique candidate genes were included in the integrated table.
+- 13 genes were selected by LASSO.
+- 20 genes were selected by Random Forest.
+- Six genes overlapped between LASSO and Random Forest.
+- FZD9 and COL18A1-AS1 appeared in both feature-selection approaches and had differential expression evidence.
+- KCNQ4 had the highest DGIdb interaction count (21).
+- CCDC170 and CCDC96 had STRING node degree 1.
+
+### Output
+- `final_candidate_table.csv` — Integrated table containing 27 candidate genes and 13 evidence columns.
+- `known_marker_results.csv` — Differential expression results for seven known breast cancer-related marker genes.
+- `day7_final_candidate_table.ipynb` — Notebook used to construct the integrated evidence table.
+
+---
+
+## Known Breast Cancer Marker Analysis
+
+Seven known breast cancer-related genes were examined using differential expression results.
+
+| Gene | Direction in TNBC |
+|---|---|
+| ESR1 | Down |
+| PGR | Down |
+| GATA3 | Down |
+| FOXA1 | Down |
+| ERBB2 | Down |
+| KRT5 | Up |
+| BCL11A | Up |
+
+KRT17 was not included because it was not identified as a matching gene symbol in the analysis.
+
+These results represent expression patterns observed in the analyzed dataset and should not be interpreted as independent biological validation.
+
+---
+
+## Overall Project Limitations and Scientific Considerations
+
+An important dataset limitation was identified during the analysis.
+
+GSE76275 is a SuperSeries consisting of two separate subseries:
+
+- GSE76124: 198 TNBC samples.
+- GSE76274: 67 non-TNBC samples.
+
+The TNBC and non-TNBC labels are completely confounded with their respective subseries. Consequently, observed gene expression differences and classification performance may reflect subseries-specific sample collection or processing effects rather than TNBC biology alone.
+
+Additional considerations:
+
+- The perfect classification performance observed in the experiments cannot be considered reliable evidence of generalizable prediction.
+- Differentially expressed genes and selected candidates are exploratory findings.
+- Pathway enrichment did not show statistically significant adjusted results at the 0.05 threshold.
+- STRING associations do not necessarily indicate direct physical interactions.
+- DGIdb records do not establish drug effectiveness or suitability for TNBC treatment.
+- Independent validation using a dataset containing both TNBC and non-TNBC samples is necessary.
+
+## Future Work
+
+- Validate candidate genes using an independent cohort containing both TNBC and non-TNBC samples.
+- Investigate potential subseries and batch effects.
+- Perform additional functional annotation of prioritized genes.
+- Explore experimentally supported gene and drug associations.
+- Improve reproducibility and extend the analysis with independent datasets.
+
+## Disclaimer
+
+This project is intended for educational and computational research purposes only. The identified candidate genes and database associations are not clinically validated biomarkers, diagnostic tools, or treatment recommendations.
